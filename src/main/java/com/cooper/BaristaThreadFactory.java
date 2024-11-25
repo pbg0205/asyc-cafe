@@ -10,7 +10,7 @@ public class BaristaThreadFactory implements ThreadFactory {
     @Override
     public Thread newThread(Runnable r) {
         threadCount++;
-        String threadName = "바리스타" + threadCount;
+        String threadName = NAME_PREFIX + threadCount;
         Thread newThread = new Thread(r, threadName);
         return newThread;
     }

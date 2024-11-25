@@ -1,6 +1,5 @@
 package com.cooper;
 
-import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 

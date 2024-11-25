@@ -5,9 +5,8 @@ public class Barista {
     public Barista() {
     }
 
-    public void makeCoffee(SingleOrder singleOrder, DashBoard dashBoard) {
+    public void makeCoffee(SingleOrder singleOrder) {
         singleOrder.inProgress();
-        dashBoard.displayStartMaking(singleOrder);
 
         try {
             Thread.sleep(singleOrder.getDrinkMenu().getPreparationSeconds().toMillis());
@@ -16,6 +15,5 @@ public class Barista {
         }
 
         singleOrder.complete();
-        dashBoard.displayComplete(singleOrder);
     }
 }
