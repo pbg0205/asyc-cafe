@@ -74,6 +74,18 @@ public class App {
         }
     }
 
+    private void acceptOrder() {
+        while (true) {
+            String input = cashier.readOrderInput();
+            if (input.equals("exit")) {
+                System.exit(0);
+            }
+
+            Order order = cashier.createOrder(input);
+            orderWaitingBoard.add(order);
+        }
+    }
+
     private void processOrders(ExecutorService baristaExecutor) {
         SingleOrder singleOrder = singleOrderWaitingBoard.poll();
         if (singleOrder != null) {
@@ -95,19 +107,6 @@ public class App {
             }
             List<SingleOrder> singleOrders = manager.processOrder(order);
             singleOrderWaitingBoard.addAll(singleOrders);
-        }
-    }
-
-    private void acceptOrder() {
-        while (true) {
-            String input = cashier.readOrderInput();
-            if (input.equals("exit")) {
-                System.exit(0);
-            }
-
-            Order order = cashier.createOrder(input);
-            orderWaitingBoard.add(order);
-
         }
     }
 }
